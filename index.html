@@ -1,3 +1,313 @@
-<htnl>
-  
-</htnl>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KisanSetu — Farmer dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <div class="side-overlay" id="sideOverlay"></div>
+
+  <!-- ============ SIDEBAR ============ -->
+  <nav class="sidebar" id="sidebar">
+    <div class="side-brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E0A94A" stroke-width="1.8"><path d="M12 2 3 7l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/></svg>
+      KisanSetu
+    </div>
+    <ul class="side-nav" id="sideNav">
+      <li><button class="side-link active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+        <span data-i18n="nav.home">Home</span>
+      </button></li>
+      <li><button class="side-link" data-view="centres">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/></svg>
+        <span data-i18n="nav.centres">Find a centre</span>
+      </button></li>
+      <li><button class="side-link" data-view="token">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
+        <span data-i18n="nav.token">My token</span>
+      </button></li>
+      <li><button class="side-link" data-view="prices">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.6 12.6 12 21.2 2.8 12 11.4 3.4H20a.6.6 0 0 1 .6.6z"/><circle cx="15.5" cy="8.5" r="1.5"/></svg>
+        <span data-i18n="nav.prices">Prices</span>
+      </button></li>
+      <li><button class="side-link" data-view="payments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16l-2.5-1.5L15 20l-2.5-1.5L10 20l-2.5-1.5L5 20l-1-1z"/><path d="M8 9h8M8 13h5"/></svg>
+        <span data-i18n="nav.payments">Payments</span>
+      </button></li>
+      <li><button class="side-link" data-view="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4 6-6 8-6s6.2 2 8 6"/></svg>
+        <span data-i18n="nav.profile">Profile</span>
+      </button></li>
+      <li><button class="side-link" data-view="ai">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a5 5 0 0 0-5 5c0 2 1 3 1.6 4 .5.8.9 1.5.9 2.5h5c0-1 .4-1.7.9-2.5.6-1 1.6-2 1.6-4a5 5 0 0 0-5-5z"/></svg>
+        <span data-i18n="nav.ai">How AI works</span>
+      </button></li>
+      <li><button class="side-link" data-view="video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M17 9.5 21 7v10l-4-2.5"/></svg>
+        <span data-i18n="nav.video">Video</span>
+      </button></li>
+    </ul>
+    <div class="side-foot">
+      <div class="lang-toggle">
+        <button id="langEn" class="active">EN</button>
+        <button id="langHi">हिंदी</button>
+      </div>
+      <div class="side-user">
+        <div class="avatar">RK</div>
+        <div>
+          <div style="color:#fff; font-weight:600;">Ramesh Kumar</div>
+          <div>Karnal, Haryana</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div>
+          <div class="page-title" id="pageTitle">Home</div>
+          <div class="page-sub" id="pageSub">Wednesday, 18 September</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="bell" title="Notifications">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M9.5 20a2.5 2.5 0 0 0 5 0"/></svg>
+          <span class="dot"></span>
+        </div>
+        <div class="avatar" style="background:var(--gold);">RK</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ============ HOME VIEW ============ -->
+      <div class="view active" id="view-home">
+        <p class="hello" data-i18n="home.hello">Namaste, Ramesh</p>
+        <p style="color:var(--ink-faint); font-size:13.5px; margin-bottom:22px;">Here's where things stand today.</p>
+
+        <!-- <div class="video-box" style="margin-bottom:20px;">
+          <div class="video-frame" id="introVideoFrame">
+            <div class="video-empty" id="introVideoEmpty">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+              No intro video yet — add a link in the code (look for <code style="background:var(--paper-alt); padding:1px 6px; border-radius:4px;">INTRO_VIDEO_URL</code> near the top of the script).
+            </div>
+          </div>
+        </div> -->
+
+        <div class="grid-3" style="margin-bottom:20px;">
+          <div class="card">
+            <div class="stat-num">42 qtl</div>
+            <div class="stat-label">Sold this season</div>
+          </div>
+          <div class="card">
+            <div class="stat-num">₹1,01,700</div>
+            <div class="stat-label">Pending payment</div>
+          </div>
+          <div class="card">
+            <div class="stat-num">4.2 km</div>
+            <div class="stat-label">Nearest open centre</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <div class="section-label">Active token</div>
+          <div id="homeTokenBox">
+            <div class="empty-state">
+              You don't have a token right now.
+              <div style="margin-top:12px;"><button class="btn btn-primary btn-sm" data-view="centres">Find a centre</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row" style="margin-bottom:14px;">
+            <div class="section-label" style="margin-bottom:0;">Recommended centres near you</div>
+            <button class="btn btn-ghost btn-sm" data-view="centres">View all</button>
+          </div>
+          <div id="homeCentreList"></div>
+        </div>
+      </div>
+
+      <!-- ============ FIND A CENTRE VIEW ============ -->
+      <div class="view" id="view-centres">
+        <div class="filter-bar">
+          <select id="cropFilter">
+            <option value="all">All crops</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Mustard">Mustard</option>
+            <option value="Bajra">Bajra</option>
+            <option value="Paddy">Paddy</option>
+          </select>
+          <select id="sortFilter">
+            <option value="best">Sort: best match</option>
+            <option value="distance">Sort: nearest</option>
+            <option value="wait">Sort: shortest wait</option>
+            <option value="price">Sort: best price</option>
+          </select>
+        </div>
+        <div class="card">
+          <div id="fullCentreList"></div>
+        </div>
+      </div>
+
+      <!-- ============ MY TOKEN VIEW ============ -->
+      <div class="view" id="view-token">
+        <div id="tokenEmptyState" class="card empty-state">
+          No active token yet.
+          <div style="margin-top:12px;"><button class="btn btn-primary btn-sm" data-view="centres">Find a centre</button></div>
+        </div>
+
+        <div class="ticket" id="ticketBox" style="display:none;">
+          <div class="ticket-top">
+            <span style="font-size:11.5px; letter-spacing:.03em; color:var(--ink-faint);">KISANSETU TOKEN</span>
+            <span id="ticketCentreShort" style="font-family:var(--serif); font-weight:700; font-size:13px; color:var(--gold-deep);"></span>
+          </div>
+          <div class="ticket-num" id="ticketNum">#000</div>
+          <div class="ticket-rows">
+            <div><span>Centre</span><b id="ticketCentre">—</b></div>
+            <div><span>Crop</span><b id="ticketCrop">—</b></div>
+            <div><span>Farmers ahead</span><b id="ticketQueue">—</b></div>
+            <div><span>Leave home by</span><b id="ticketLeave">—</b></div>
+          </div>
+          <div class="queue-bar"><div class="queue-bar-fill" id="queueBarFill" style="width:100%;"></div></div>
+          <div class="leave-alert" id="leaveAlert">
+            <span>⏱</span>
+            <span>Your queue position updates automatically — this is a live demo, so it moves on its own every few seconds.</span>
+          </div>
+          <div style="margin-top:16px; display:flex; gap:10px;">
+            <button class="btn btn-ghost" style="flex:1; justify-content:center;" id="cancelTokenBtn">Cancel token</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PRICES VIEW ============ -->
+      <div class="view" id="view-prices">
+        <div class="card">
+          <div class="section-label">Today's prices — Karnal region</div>
+          <table>
+            <thead><tr><th>Crop</th><th>MSP</th><th>Market price</th><th>Trend</th></tr></thead>
+            <tbody id="pricesTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ PAYMENTS VIEW ============ -->
+      <div class="view" id="view-payments">
+        <div class="card">
+          <div class="section-label">Receipts &amp; payment history</div>
+          <table>
+            <thead><tr><th>Token</th><th>Crop</th><th>Quantity</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody id="paymentsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ PROFILE VIEW ============ -->
+      <div class="view" id="view-profile">
+        <div class="card">
+          <div class="row">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div class="avatar" style="width:52px; height:52px; font-size:18px; background:var(--gold);">RK</div>
+              <div>
+                <h3 style="font-size:18px;">Ramesh Kumar</h3>
+                <p style="font-size:13px; color:var(--ink-faint); margin-top:2px;">Karnal, Haryana</p>
+              </div>
+            </div>
+            <span class="badge badge-low">Full access</span>
+          </div>
+          <div class="profile-grid">
+            <div class="field"><span>Phone</span><b>+91 98xxxxx210</b></div>
+            <div class="field"><span>Land holding</span><b>3.4 acres</b></div>
+            <div class="field"><span>Preferred crops</span><b>Wheat, Mustard</b></div>
+            <div class="field"><span>KYC status</span><b>Verified</b></div>
+            <div class="field"><span>Language</span><b>English</b></div>
+            <div class="field"><span>Member since</span><b>March 2025</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ HOW AI WORKS VIEW ============ -->
+      <div class="view" id="view-ai">
+        <div class="plain-callout">
+          <b>In plain terms:</b> KisanSetu doesn't just send you to the nearest centre. It scores every centre on four things a farmer actually cares about, and recommends whichever one comes out on top for you today.
+        </div>
+
+        <ul class="factor-list">
+          <li class="factor-item">
+            <div class="fname">Queue length <span>35%</span></div>
+            <p>How many farmers are already waiting there, right now.</p>
+          </li>
+          <li class="factor-item">
+            <div class="fname">Distance <span>25%</span></div>
+            <p>How far the centre is from your registered location.</p>
+          </li>
+          <li class="factor-item">
+            <div class="fname">Price offered <span>25%</span></div>
+            <p>What that centre is currently paying, against MSP and nearby markets.</p>
+          </li>
+          <li class="factor-item">
+            <div class="fname">Centre reliability <span>15%</span></div>
+            <p>How steadily that centre has been processing farmers lately.</p>
+          </li>
+        </ul>
+
+        <div class="card">
+          <div class="row explain-select" style="flex-wrap:wrap; gap:10px;">
+            <div class="section-label" style="margin-bottom:0;">See the score for a real centre</div>
+            <select id="aiCentreSelect"></select>
+          </div>
+          <div id="aiExplainBox"></div>
+        </div>
+      </div>
+
+      <!-- ============ VIDEO VIEW ============ -->
+      <div class="view" id="view-video">
+        <p style="color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; max-width:56ch;">
+          Drop the walkthrough video in here — paste a YouTube link, or upload a file straight from your laptop.
+        </p>
+        <div class="video-box">
+          <div class="video-frame" id="videoFrame">
+            <div class="video-empty" id="videoEmpty">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+              No video added yet.
+            </div>
+          </div>
+          <div class="video-controls">
+            <input type="text" id="ytInput" placeholder="Paste a YouTube link (e.g. https://youtube.com/watch?v=...)">
+            <button class="btn btn-ghost" id="ytBtn">Load link</button>
+            <label class="file-btn" for="fileInput">Upload a video file</label>
+            <input type="file" id="fileInput" accept="video/*">
+          </div>
+          <p class="video-note">Nothing is uploaded anywhere — the file just plays locally in your browser, for this demo.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL (receipt / AI explain) ============ -->
+<div class="modal-overlay" id="receiptModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
